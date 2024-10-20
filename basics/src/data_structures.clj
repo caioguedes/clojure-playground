@@ -94,7 +94,7 @@
   (get-in #{1 2 3} [0]))
 
 ;;
-;; Nth
+;; nth
 ;;
 (nth '(1 2 3) 2)
 (nth [1 2 3] 2)
@@ -103,3 +103,23 @@
 (comment
   (nth #{1 2 3} 0)
   (nth {:a :b} :a))
+
+;;
+;; assoc, assoc-in
+;;
+(assoc [1 2 3] 0 10)
+(assoc {:foo "foo-value"
+        :bar "bar-value"} :foo "foo-value-updated")
+
+(comment
+  (assoc '(1 2 3) 0 10)
+  (assoc #{1 2 3} 0 10)
+  (assoc (vec "foo bar") 0 \a))
+
+(assoc-in [["x" "_" "o"]
+           ["_" "_" "o"]
+           ["_" "_" "x"]] [1 1] "x")
+
+(assoc-in {:foo "foo-value"
+           :bar {:nested {:buzz "buzz-value"}}}
+          [:bar :nested :buzz] "buzz-value-updated")
