@@ -30,6 +30,7 @@
 (def map-2 {:k [1 2 3] :s #{"b" "c" "a"}})
 
 (type map-1)
+(type map-2)
 (type {})
 (ancestors (type map-1))
 
@@ -46,7 +47,6 @@
 (type '())
 (ancestors (type list-1))
 
-
 ;;
 ;; Sequences
 ;;
@@ -58,5 +58,39 @@
 (type (seq [1 2 3]))
 (type (seq "my a string"))
 
+(when (seq? [1 2 3 ]) :not-empty)
+(when (empty? []) :empty)
+
 (comment
   (type (seq 1234)))
+
+;;
+;; Functions
+;;
+
+;;
+;; get, get-in
+;;
+(get [] 0)
+(get [1 2 3] 0)
+(get ["foo" "bar"] 2 "buzz")
+(get {:key "value" :key-2 "value-2"} :key)
+
+(comment
+  (get '(0 1 2) 0)
+  (get #{1 2 3} 0))
+
+(get-in [["A" "C" "_"]
+         ["_" "X" "_"]
+         ["B" "_" "_"]] [1 1])
+(get-in {:foo {:bar "bar-value"}
+         :buzz {:zig "zig-value"}} [:buzz :zig])
+(get-in [1 2 3] [0])
+
+(comment
+  (get-in '(1 2 3) [0])
+  (get-in #{1 2 3} [0]))
+
+;;
+;; Nth
+;;
