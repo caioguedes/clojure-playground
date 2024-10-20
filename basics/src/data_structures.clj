@@ -78,6 +78,7 @@
 (get {:key "value" :key-2 "value-2"} :key)
 
 (comment
+  ;; bad
   (get '(0 1 2) 0)
   (get #{1 2 3} 0))
 
@@ -90,6 +91,7 @@
 (get-in [1 2 3] [0])
 
 (comment
+  ;; bad
   (get-in '(1 2 3) [0])
   (get-in #{1 2 3} [0]))
 
@@ -101,6 +103,7 @@
 (nth "a b c" 2)
 
 (comment
+  ;; bad
   (nth #{1 2 3} 0)
   (nth {:a :b} :a))
 
@@ -123,3 +126,17 @@
 (assoc-in {:foo "foo-value"
            :bar {:nested {:buzz "buzz-value"}}}
           [:bar :nested :buzz] "buzz-value-updated")
+
+(assoc-in {:foo "a" :bar "b"} [:new :path] "some value")
+
+;;
+;; dissoc
+;;
+(def map-3 {:foo "foo-value" :bar "bar-value" :nested {:buzz {:some "value"}}})
+(dissoc map-3 :foo)
+(dissoc map-3 :buzz)
+(dissoc map-3 :foo :bar :nested)
+
+(comment
+  ;; bad
+  (dissoc [1 2 3] 0))
