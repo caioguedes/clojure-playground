@@ -73,6 +73,7 @@
 ;;
 (get [] 0)
 (get [1 2 3] 0)
+(get "a b c" 2)
 (get ["foo" "bar"] 2 "buzz")
 (get {:key "value" :key-2 "value-2"} :key)
 
@@ -85,6 +86,7 @@
          ["B" "_" "_"]] [1 1])
 (get-in {:foo {:bar "bar-value"}
          :buzz {:zig "zig-value"}} [:buzz :zig])
+(get-in {:foo {:bar "bar-value"}} [:foo :buzz] :not-found)
 (get-in [1 2 3] [0])
 
 (comment
@@ -94,3 +96,10 @@
 ;;
 ;; Nth
 ;;
+(nth '(1 2 3) 2)
+(nth [1 2 3] 2)
+(nth "a b c" 2)
+
+(comment
+  (nth #{1 2 3} 0)
+  (nth {:a :b} :a))
