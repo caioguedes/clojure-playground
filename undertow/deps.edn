@@ -1,0 +1,4 @@
+{:deps {io.undertow/undertow-core {:mvn/version "2.1.0.Final"}
+        io.undertow/undertow-servlet {:mvn/version "2.1.0.Final"}
+        io.undertow/undertow-websockets-jsr {:mvn/version "2.1.0.Final"}
+        integrant/integrant {:mvn/version "0.13.1"}}}
