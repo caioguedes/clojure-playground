@@ -1,0 +1,2 @@
+{:paths ["src"]
+ :deps {com.graphql-java/graphql-java {:mvn/version "26.0"}}}
