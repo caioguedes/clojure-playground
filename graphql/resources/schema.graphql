@@ -5,6 +5,7 @@ type Query {
 type Book {
   id: Int
   title: String
+  author: Author
 }
 
 type Author {
